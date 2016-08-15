@@ -46,6 +46,7 @@ func Init() {
 	vm.Set("vgoAlignCenter", vgo.AlignCenter)
 
 	vm.Set("vgoPathWindingHole", PathWindingHole)
+
 	vm.Set("sysGetTextWidth", GetTextWidth)
 	vm.Set("sysGetTextHeight", GetTextHeight)
 
