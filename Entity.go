@@ -14,9 +14,13 @@ type Entity struct {
 }
 
 func (e *Entity) check() {
-	//fmt.Println("Checkingn file ", e.File)
 
 	info, _ := os.Stat(e.File)
+
+	if info == nil {
+		fmt.Println("Unable to open file ", e.File)
+	}
+
 	updated :=  info.ModTime()
 
 	if e.Last != updated {
