@@ -44,6 +44,10 @@ func Init() {
 	vm.Set("vgoAlignLeft", vgo.AlignLeft)
 	vm.Set("vgoAlignMiddle", vgo.AlignMiddle)
 	vm.Set("vgoAlignCenter", vgo.AlignCenter)
+	vm.Set("vgoAlignBaseline", vgo.AlignBaseline)
+	vm.Set("vgoAlignBottom", vgo.AlignBottom)
+	vm.Set("vgoAlignRight", vgo.AlignRight)
+	vm.Set("vgoAlignTop", vgo.AlignTop)
 
 	vm.Set("vgoPathWindingHole", PathWindingHole)
 
