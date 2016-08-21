@@ -15,7 +15,11 @@ type Entity struct {
 
 func (e *Entity) check() {
 
-	info, _ := os.Stat(e.File)
+	info, err := os.Stat(e.File)
+
+	if err != nil {
+		fmt.Println(err, " Unable to open file ", e.File)
+	}
 
 	if info == nil {
 		fmt.Println("Unable to open file ", e.File)
@@ -33,6 +37,14 @@ func (e *Entity) check() {
 
 		fmt.Println("loading..." + e.File)
 	}
+}
+
+func (e *Entity) SetFloat(name string, value float32) {
+	vm.Set(name, value)
+}
+
+func (e *Entity) SetInt(name string, value int) {
+	vm.Set(name, value)
 }
 
 func (e *Entity) Draw(x, y, w, h int, text string) {
