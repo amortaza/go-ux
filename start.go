@@ -9,7 +9,6 @@ import (
 var Ctx *vgo.Context
 var vm *otto.Otto
 
-
 func Init() {
 
 	vm = otto.New()
