@@ -8,21 +8,23 @@ import (
 )
 
 type Entity struct {
-	File string
-	Last time.Time
-	Js   string
+	Filename string
+	Last     time.Time
+	Js       string
 }
 
 func (e *Entity) check() {
 
-	info, err := os.Stat(e.File)
+	info, err := os.Stat(e.Filename)
 
 	if err != nil {
-		fmt.Println(err, " Unable to open file ", e.File)
+		fmt.Println(err, " Unable to open file ", e.Filename)
+		panic("Unable to open file " + e.Filename)
 	}
 
 	if info == nil {
-		fmt.Println("Unable to open file ", e.File)
+		fmt.Println("Unable to open file ", e.Filename)
+		panic("Unable to open file " + e.Filename)
 	}
 
 	updated :=  info.ModTime()
@@ -31,11 +33,11 @@ func (e *Entity) check() {
 
 		e.Last = updated
 
-		buf, _ := ioutil.ReadFile(e.File)
+		buf, _ := ioutil.ReadFile(e.Filename)
 
 		e.Js = string(buf)
 
-		fmt.Println("loading..." + e.File)
+		fmt.Println("loading..." + e.Filename)
 	}
 }
 
