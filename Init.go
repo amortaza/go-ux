@@ -84,14 +84,17 @@ func RadialGradient(cx,cy,inr,outr int, i,o vgo.Color) vgo.Paint {
 }
 
 func GetTextWidth(text string) float32 {
+
 	w, _ := Ctx.TextBounds(0, 0, text)
 
 	return w
 }
 
 func GetTextHeight(text string) float32 {
+
 	_, a := Ctx.TextBounds(0, 0, text)
 
+	fmt.Println(len(a))
 	fmt.Println(a[0], a[1], a[2], a[3])
 
 	return a[3] - a[1]
