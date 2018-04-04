@@ -29,11 +29,13 @@ func Init() {
 
 	fmt.Println("(+) Created nanovgo context")
 
-	Icon.Trash = iconToStr(0xE729)
+	Icon.Carrot_Down = iconToStr(0xe75c)
+	Icon.Carrot_Up = iconToStr(0xe75f)
 	Icon.Check = iconToStr(0x2713)
 	Icon.ChevronRight = iconToStr(0xE75E)
-	Icon.Search = iconToStr(0x1F50D)
 	Icon.CircledCross = iconToStr(0x2716)
+	Icon.Search = iconToStr(0x1F50D)
+	Icon.Trash = iconToStr(0xE729)
 
 	vm.Set("vgoLinearGradient", LinearGradient)
 	vm.Set("vgoBoxGradient", BoxGradient)
@@ -54,6 +56,8 @@ func Init() {
 	vm.Set("sysGetTextHeight", GetTextHeight)
 
 	vm.Set("GuiIconCheck", Icon.Check)
+	vm.Set("GuiIconCarrotUp", Icon.Carrot_Up)
+	vm.Set("GuiIconCarrotDown", Icon.Carrot_Down)
 	vm.Set("GuiIconSearch", Icon.Search)
 	vm.Set("GuiIconCircledCross", Icon.CircledCross)
 	vm.Set("GuiIconChevronRight", Icon.ChevronRight)

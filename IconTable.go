@@ -3,11 +3,12 @@ package ux
 var Icon IconTable
 
 type IconTable struct {
-	Trash string
+	Carrot_Up, Carrot_Down string
 	Check string
 	ChevronRight string
-	Search string
 	CircledCross string
+	Search string
+	Trash string
 }
 
 func iconToStr(cp int) string {
