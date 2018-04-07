@@ -1,44 +1,21 @@
 package ux
 
 import (
-	"time"
-	"os"
-	"io/ioutil"
 	"fmt"
 )
 
 type Entity struct {
-	Filename string
-	Last     time.Time
-	Js       string
+
+	jsfile *JsFile
 }
 
-func (e *Entity) check() {
+func NewEntity(filename string) *Entity {
 
-	info, err := os.Stat(e.Filename)
+	entity := &Entity{}
 
-	if err != nil {
-		fmt.Println(err, " Unable to open file ", e.Filename)
-		panic("Unable to open file " + e.Filename)
-	}
+	entity.jsfile = NewJsFile(filename)
 
-	if info == nil {
-		fmt.Println("Unable to open file ", e.Filename)
-		panic("Unable to open file " + e.Filename)
-	}
-
-	updated :=  info.ModTime()
-
-	if e.Last != updated {
-
-		e.Last = updated
-
-		buf, _ := ioutil.ReadFile(e.Filename)
-
-		e.Js = string(buf)
-
-		fmt.Println("loading..." + e.Filename)
-	}
+	return entity
 }
 
 func (e *Entity) SetFloat(name string, value float32) {
@@ -51,7 +28,7 @@ func (e *Entity) SetInt(name string, value int) {
 
 func (e *Entity) Draw(x, y, w, h int, text string) {
 
-	e.check()
+	e.jsfile.check()
 
 	vm.Set("x", float32(x))
 	vm.Set("y", float32(y))
@@ -61,7 +38,7 @@ func (e *Entity) Draw(x, y, w, h int, text string) {
 
 	vm.Set("text", text)
 
-	_, er := vm.Run(e.Js)
+	_, er := vm.Run(e.jsfile.js)
 
 	if er != nil {
 		fmt.Println(e)
